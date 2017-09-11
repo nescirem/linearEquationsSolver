@@ -33,7 +33,7 @@ PROGRAM solve_liner_equation
 	DO i_row=1,num_of_var !按列循环
         !行变换列主元
 		DO i_col=i_row+1,num_of_var !在该列下三角区域内寻找绝对值最大的数，调换绝对值最大的数所在行
-									!至该列
+			!至该列
 			IF (ABS(MAT_lin_equ(i_row,i_col)) .GT. ABS(MAT_lin_equ(i_row,i_row))) THEN
 				inter_column(:)=MAT_lin_equ(:,i_col)
 				MAT_lin_equ(:,i_col)=MAT_lin_equ(:,i_row)
@@ -95,7 +95,7 @@ SUBROUTINE read_matrix(file_route)
 				ENDDO
 			ENDIF
 			IF(status<0) CALL error_output(2)
-            IF(status>0) CALL error_output(3)
+           	IF(status>0) CALL error_output(3)
 		ENDIF
 	ENDDO
 	CLOSE(666)
@@ -113,9 +113,11 @@ SUBROUTINE error_output(num_of_err)
 	CASE(2)
 		WRITE(*,"('ERROR code:',I2.2)") num_of_err
 		WRITE(*,*) "End of the file, but haven't got the value"
-    CASE(3)
+		STOP
+    	CASE(3)
 		WRITE(*,"('ERROR code:',I2.2)") num_of_err
 		WRITE(*,*) "Unexpect error when reading the file"
+		STOP
 	CASE(4)
 		WRITE(*,"('ERROR code:',I2.2)") num_of_err
 		WRITE(*,*) "Out of precision!"

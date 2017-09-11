@@ -1,4 +1,4 @@
-!仅可求解满秩的线性方程组，只存在唯一解。
+!Only for the full rank linear equation, which have a unique solution.
 MODULE typedef
 	INTEGER :: num_of_var
 	INTEGER :: row,column
@@ -24,16 +24,15 @@ PROGRAM solve_liner_equation
 	INQUIRE(FILE=file_route,EXIST=alive)
 	IF(.NOT.alive) CALL error_output(1)
 	
-	!读入矩阵
+	!Read in matrix which represent a linear equation.
 	CALL read_matrix(file_route)
 	
-	!判断方程组是否有解
+	!Have a solution or not judgement
 	
-	!列主元高斯消元法
-	DO i_row=1,num_of_var !按列循环
-        !行变换列主元
-		DO i_col=i_row+1,num_of_var !在该列下三角区域内寻找绝对值最大的数，调换绝对值最大的数所在行
-			!至该列
+	!Gaussian Elimination with Pivoting Method
+	DO i_row=1,num_of_var 
+        	!find the largest (in absolute value) element among lower triangular part of that matrix
+		DO i_col=i_row+1,num_of_var !ehchange row
 			IF (ABS(MAT_lin_equ(i_row,i_col)) .GT. ABS(MAT_lin_equ(i_row,i_row))) THEN
 				inter_column(:)=MAT_lin_equ(:,i_col)
 				MAT_lin_equ(:,i_col)=MAT_lin_equ(:,i_row)
@@ -42,7 +41,7 @@ PROGRAM solve_liner_equation
 				CYCLE
 			ENDIF
 		ENDDO
-        	!消元
+        	!Elimination
         	DO i_col=i_row+1,num_of_var
 			multiplier=-(MAT_lin_equ(i_row,i_col)/MAT_lin_equ(i_row,i_row))
 			FORALL (i_rr=i_row:row)
@@ -50,11 +49,11 @@ PROGRAM solve_liner_equation
 			ENDFORALL
 		ENDDO
 	ENDDO
-	!反代求解
+	!Reverse solution
 	solution(num_of_var)=MAT_lin_equ(row,column)/MAT_lin_equ(num_of_var,num_of_var)
 	DO i_s=2,column
 		ti_c=num_of_var-i_s+1
-		add=0
+		add=0.0d0
 		DO i_row=ti_c+1,num_of_var
 			add=add+MAT_lin_equ(i_row,ti_c)*solution(i_row)
 		ENDDO
@@ -66,7 +65,6 @@ PROGRAM solve_liner_equation
 	CALL dealloc
 
 	STOP
-	
 END PROGRAM solve_liner_equation
 	
 SUBROUTINE read_matrix(file_route)

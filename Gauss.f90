@@ -1,8 +1,8 @@
 !仅可求解满秩的线性方程组，只存在唯一解。
 MODULE typedef
 	INTEGER :: num_of_var
-    INTEGER :: row,column
-    INTEGER :: i_row,i_col,i_rr,i_s,ti_c
+	INTEGER :: row,column
+	INTEGER :: i_row,i_col,i_rr,i_s,ti_c
 	REAL(8),ALLOCATABLE :: MAT_lin_equ(:,:)
 	!REAL(8),ALLOCATABLE :: MAT_lower_triangular(:,:)
 	REAL(8),ALLOCATABLE :: solution(:),inter_column(:)
@@ -33,7 +33,7 @@ PROGRAM solve_liner_equation
 	DO i_row=1,num_of_var !按列循环
         !行变换列主元
 		DO i_col=i_row+1,num_of_var !在该列下三角区域内寻找绝对值最大的数，调换绝对值最大的数所在行
-									!至该列
+			!至该列
 			IF (ABS(MAT_lin_equ(i_row,i_col)) .GT. ABS(MAT_lin_equ(i_row,i_row))) THEN
 				inter_column(:)=MAT_lin_equ(:,i_col)
 				MAT_lin_equ(:,i_col)=MAT_lin_equ(:,i_row)
@@ -42,9 +42,9 @@ PROGRAM solve_liner_equation
 				CYCLE
 			ENDIF
 		ENDDO
-        !消元
-        DO i_col=i_row+1,num_of_var
-		    multiplier=-(MAT_lin_equ(i_row,i_col)/MAT_lin_equ(i_row,i_row))
+        	!消元
+        	DO i_col=i_row+1,num_of_var
+			multiplier=-(MAT_lin_equ(i_row,i_col)/MAT_lin_equ(i_row,i_row))
 			FORALL (i_rr=i_row:row)
 				MAT_lin_equ(i_rr,i_col)=MAT_lin_equ(i_rr,i_col)+MAT_lin_equ(i_rr,i_row)*multiplier
 			ENDFORALL
@@ -97,7 +97,7 @@ SUBROUTINE read_matrix(file_route)
 				ENDDO
 			ENDIF
 			IF(status<0) CALL error_output(2)
-            IF(status>0) CALL error_output(3)
+        	IF(status>0) CALL error_output(3)
 		ENDIF
 	ENDDO
 	CLOSE(666)
@@ -117,7 +117,7 @@ SUBROUTINE error_output(num_of_err)
 		WRITE(*,"('ERROR code:',I2.2)") num_of_err
 		WRITE(*,*) "End of the file, but haven't got the value"
 		STOP
-    CASE(3)
+	CASE(3)
 		WRITE(*,"('ERROR code:',I2.2)") num_of_err
 		WRITE(*,*) "Unexpect error when reading the file"
 		STOP

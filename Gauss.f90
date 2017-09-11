@@ -89,7 +89,7 @@ SUBROUTINE read_matrix(file_route)
 				row=num_of_var+1
 				ALLOCATE(MAT_lin_equ(row,column))
 				ALLOCATE(solution(num_of_var),inter_column(row))
-			ELSEIF(dum(3:9)=='martrix') THEN
+			ELSEIF(dum(3:8)=='matrix') THEN
 				DO i_col=1,column
 					READ(666,*,IOSTAT=status)  (MAT_lin_equ(i_row,i_col),i_row=1,row)
 				ENDDO

@@ -1,2 +1,5 @@
 # SloveLinearEquations
-Gaussian elimination
+
+Now support:
+	· Gaussian elimination
+	· LU triangular decomposition

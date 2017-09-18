@@ -1,0 +1,9 @@
+!SUBROUTINE dealloc
+!	USE typedef
+!	IMPLICIT NONE
+!	
+!	DEALLOCATE(U,A,b)
+!	DEALLOCATE(solution)
+!	DEALLOCATE(y)
+!	
+!END SUBROUTINE dealloc

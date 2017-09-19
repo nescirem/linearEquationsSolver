@@ -1,5 +1,5 @@
 SUBROUTINE read_matrix_doolittle
-	USE typedef, ONLY: n_var,b,A,L,IL,U,solution,y,i_row,i_col
+	USE typedef, ONLY: n_var,b,A,P,L,IL,U,solution,y,i_row,i_col
 	USE IO_control, ONLY: file_route,status
 	IMPLICIT NONE
 	CHARACTER(LEN=256) dum
@@ -17,7 +17,7 @@ SUBROUTINE read_matrix_doolittle
 				READ(666,*,IOSTAT=status) n_var
 				ALLOCATE(A(n_var,n_var))
 				ALLOCATE(b(n_var),y(n_var))
-				ALLOCATE(L(n_var,n_var),IL(n_var,n_var),U(n_var,n_var))
+				ALLOCATE(P(n_var,n_var),L(n_var,n_var),IL(n_var,n_var),U(n_var,n_var))
 				ALLOCATE(solution(n_var))
 			ELSEIF(dum(3:9)=='martrix') THEN
 				DO i_row=1,n_var

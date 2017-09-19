@@ -1,22 +1,50 @@
 SUBROUTINE doolittle_elimination
-	USE typedef, ONLY: n_var,b,A,L,IL,U,solution,y,i_row,i_col
+	USE typedef, ONLY: n_var,b,A,P,L,IL,U,solution,y,i_row,i_col
 	IMPLICIT NONE
 	LOGICAL l_invertible
-	INTEGER :: i_i,i_s
+	INTEGER :: i_s,i_cc
 	REAL(8) :: multiplier,add,det_A
 	
 	!read in martrix
 	CALL read_matrix_doolittle	
-	!initiate L,IL as unit matrix
-	L=0.0d0
-	IL=0.0d0
-	FORALL(i_i=1:n_var) L(i_i,i_i)=1.0d0
-	FORALL(i_i=1:n_var) IL(i_i,i_i)=1.0d0
-	!initiate done
 	
-	!slove IL
+	!initiate L,IL,P as unit matrix
+	IL=0.0d0
+	L=0.0d0
+	P=0.0d0
+	FORALL(i_s=1:n_var) IL(i_s,i_s)=1.0d0
+	FORALL(i_s=1:n_var) L(i_s,i_s)=1.0d0
+	FORALL(i_s=1:n_var) P(i_s,i_s)=1.0d0
+	!initiate done
 	U=A
-	DO i_row=1,n_var-1 
+	DO i_col=1,n_var
+        !find the largest (in absolute value) element among lower triangular part of that matrix
+		DO i_row=i_row+1,n_var !ehchange rows
+			IF (ABS(U(i_row,i_col)) .GT. ABS(U(i_col,i_col))) THEN
+				L(i_col,i_col)=0.0d0
+				L(i_col,i_row)=1.0d0
+				L(i_row,i_col)=1.0d0
+				L(i_row,i_row)=0.0d0
+				P=MATMUL(L,P)
+				L=0.0d0
+				FORALL(i_s=1:n_var) L(i_s,i_s)=1.0d0
+			ELSE
+				CYCLE
+			ENDIF
+		ENDDO
+		DO i_row=i_col+1,n_var
+		    multiplier=-(U(i_row,i_col)/U(i_row,i_row))
+			FORALL (i_cc=i_col:n_var)
+				U(i_row,i_cc)=U(i_row,i_cc)+U(i_col,i_cc)*multiplier
+			ENDFORALL
+		ENDDO
+	ENDDO
+
+	!PA=LU
+	!ILPA=U
+	!slove IL
+	U=MATMUL(P,A)
+	DO i_row=1,n_var-1
 		DO i_col=i_row+1,n_var
 			multiplier=-(U(i_col,i_row)/U(i_row,i_row))
 			L(i_col,i_row)=multiplier
@@ -26,7 +54,7 @@ SUBROUTINE doolittle_elimination
 		ENDDO
 	ENDDO
 	L=0.0d0
-	!invert matrix
+	!invert matrix IL
 	CALL invert_matrix(IL,L)
 	
 	!A invertible judgment
@@ -37,7 +65,8 @@ SUBROUTINE doolittle_elimination
 	
 	IF(det_A == 0) CALL error_output(9)
 	
-	!Reverse solution Ly=b
+	!Reverse solution Ly=Pb
+	b=MATMUL(P,b)
 	y(1)=b(1)/L(1,1)
 	DO i_row=2,n_var
 		add=0.0d0

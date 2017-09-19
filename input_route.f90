@@ -10,4 +10,4 @@ SUBROUTINE input_route
 	INQUIRE(FILE=file_route,EXIST=alive)
 	IF(.NOT.alive) CALL error_output(1)
 	
-END
+END SUBROUTINE input_route

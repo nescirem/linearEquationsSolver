@@ -33,4 +33,4 @@ SUBROUTINE read_matrix_doolittle
 	
 	IF(isNaN(A(n_var,n_var))) CALL error_output(4)
 	
-ENDSUBROUTINE read_matrix_doolittle
+END SUBROUTINE read_matrix_doolittle

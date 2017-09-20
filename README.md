@@ -1,5 +1,5 @@
 # Slove Linear Equations
->>  _flowchart and program control flow_
+>  _flowchart and program control flow_
 
 ## classical methods
 

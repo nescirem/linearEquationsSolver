@@ -1,7 +1,7 @@
 # Slove Linear Equations
 >  _flowchart and program control flow_
 
-## classical methods
+## Direct methods
 
  >  * [**Gaussian elimination**][Gaussian_elimination] method with [pivoting][Pivot_element] `added`<br>
  >  * [**LU decomposition**][LU_decomposition] method with [pivoting][Pivot_element] `added`<br>

@@ -3,8 +3,10 @@
 
 ## classical methods
 
->`added`   * [**Gaussian elimination**][Gaussian_elimination] method with [pivoting][Pivot_element]<br>
->`added`   * [**LU decomposition**][LU_decomposition] method with [pivoting][Pivot_element]<br>
+>`added`   
+* [**Gaussian elimination**][Gaussian_elimination] method with [pivoting][Pivot_element]<br>
+>`added`   
+* [**LU decomposition**][LU_decomposition] method with [pivoting][Pivot_element]<br>
 
 >> _control flow and flowcharts of_ **Gaussian elimination**
 

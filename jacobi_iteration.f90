@@ -1,4 +1,6 @@
 SUBROUTINE jacobi_iteration
+	USE typedef, only: n_var,A,b,y,L,U,D,R,M,solution,i_row,i_col
+	USE algorithm_control, ONLY: iter,Lax_factor,Err_limit
 	IMPLICIT NONE
 	INTEGER :: i_i,i_r,i_c
 	REAL(8),ALLOCATABLE :: solution_old(:)

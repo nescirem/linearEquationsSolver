@@ -1,4 +1,4 @@
-SUBROUTINE doolittle_elimination
+SUBROUTINE LU_decomposition
 	USE typedef, ONLY: n_var,b,A,P,L,IL,U,solution,y,i_row,i_col
 	IMPLICIT NONE
 	LOGICAL l_invertible
@@ -6,9 +6,9 @@ SUBROUTINE doolittle_elimination
 	REAL(8) :: multiplier,add,det_A
 	
 	!read in martrix
-	CALL read_matrix_doolittle	
+	CALL read_matrix_doolittle
+	!initiate L,IL as unit matrix
 	
-	!initiate L,IL,P as unit matrix
 	IL=0.0d0
 	L=0.0d0
 	P=0.0d0
@@ -17,7 +17,7 @@ SUBROUTINE doolittle_elimination
 	FORALL(i_s=1:n_var) P(i_s,i_s)=1.0d0
 	!initiate done
 	U=A
-	DO i_col=1,n_var
+	DO i_col=1,n_var !°´ÁÐÑ­»·
         !find the largest (in absolute value) element among lower triangular part of that matrix
 		DO i_row=i_row+1,n_var !ehchange rows
 			IF (ABS(U(i_row,i_col)) .GT. ABS(U(i_col,i_col))) THEN
@@ -40,8 +40,6 @@ SUBROUTINE doolittle_elimination
 		ENDDO
 	ENDDO
 
-	!PA=LU
-	!ILPA=U
 	!slove IL
 	U=MATMUL(P,A)
 	DO i_row=1,n_var-1
@@ -54,7 +52,7 @@ SUBROUTINE doolittle_elimination
 		ENDDO
 	ENDDO
 	L=0.0d0
-	!invert matrix IL
+	!invert matrix
 	CALL invert_matrix(IL,L)
 	
 	!A invertible judgment
@@ -86,4 +84,4 @@ SUBROUTINE doolittle_elimination
 		solution(i_row)=(y(i_row)-add)/U(i_row,i_row)
 	ENDDO
 
-END SUBROUTINE doolittle_elimination
+END SUBROUTINE LU_decomposition

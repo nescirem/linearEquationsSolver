@@ -1,5 +1,5 @@
-SUBROUTINE read_matrix_doolittle
-	USE typedef, ONLY: n_var,b,A,P,L,IL,U,solution,y,i_row,i_col
+SUBROUTINE read_matrix_jacobi
+	USE typedef, only: n_var,A,b,y,L,U,D,R,M,solution,i_row,i_col
 	USE IO_control, ONLY: file_route,status
 	IMPLICIT NONE
 	CHARACTER(LEN=256) dum
@@ -15,9 +15,9 @@ SUBROUTINE read_matrix_doolittle
 		IF (dum(1:1)=='*' .OR. dum(1:1)=='#') THEN
 			IF (dum(3:21)=='number of variables') THEN
 				READ(666,*,IOSTAT=status) n_var
-				ALLOCATE(A(n_var,n_var))
+				ALLOCATE(A(n_var,n_var),L(n_var,n_var),U(n_var,n_var),D(n_var,n_var))
 				ALLOCATE(b(n_var),y(n_var))
-				ALLOCATE(P(n_var,n_var),L(n_var,n_var),IL(n_var,n_var),U(n_var,n_var))
+				ALLOCATE(R(n_var,n_var),M(n_var,n_var))
 				ALLOCATE(solution(n_var))
 			ELSEIF(dum(3:9)=='martrix') THEN
 				DO i_row=1,n_var
@@ -33,4 +33,5 @@ SUBROUTINE read_matrix_doolittle
 	
 	IF(isNaN(A(n_var,n_var))) CALL error_output(4)
 	
-END SUBROUTINE read_matrix_doolittle
+ENDSUBROUTINE read_matrix_jacobi
+	

@@ -1,8 +1,18 @@
 "JUST FOR FUN"
 # number of variables
-3
-# matrix
-2 1 5 5
-1 1 -1 0
-1 3 1 6
+ 3
+# martrix
+ 1 2 3 14
+ 2 5 2 18
+ 3 1 5 20
+ 
+* CONTROL *
+# method 1=Gaussian elimination; 2=LU decomposition; 3=Jacobi method; 4=G–S method; 5=SOR method
+ 3
+# iter
+ 150
+# error limit
+ 1D-7
+# relaxiation factor
+ 0.3
 END

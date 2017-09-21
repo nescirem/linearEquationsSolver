@@ -12,7 +12,7 @@
 
 --------------------
 ## Iterative methods
- >  * [**Jacobi method**][Jacobi_method] `added``bad code`<br>
+ >  * [**Jacobi method**][Jacobi_method] `added` `bad code`<br>
  >  * [**Gauss–Seidel method**][Gauss–Seidel_method] `haven't added`<br>
  >  * [**Successive over-relaxation method**][Successive_over-relaxation] `haven't added`<br>
 

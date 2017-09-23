@@ -2,22 +2,23 @@ Slove Linear Equations
 ========================
 ###### _flowchart and program control flow_ ######
 
-_Values_      | Define
-> `A`         :Coefficient matrix  
-> `b`         :Right side vector  
-> `A|b`       :Augmented matrix which contains coefficient matrix `A` and right side vector `b`  
-> `iter`      :Number of iterations  
-> `Err_limit` :Iterative error  
-> `Lax_factor`:Relaxation factor  
-
-> `L`         :Lower triangular matrix of `A`  
-> `U`         :Upper triangular matrix of `A`  
-> `R`         :`R`=`L`+`U`  
-> `D`         :Diagonal matrix of `A`  
-> `M`         :`M`=invert`D`  
-> `P`         :Arrangement matrix  
-> `y`         :Integer vector in dirext methods and jacobi method  
-> `solution`  :Repersent `x`, which defined by `A`·`x`=`b`  
+ _Values_    | Define
+-------------|-----------------------------------------------------------------------------------------
+ `A`         | Coefficient matrix
+ `b`         | Right side vector
+ `A\|b`       | Augmented matrix which contains coefficient matrix `A` and right side vector `b`
+ `iter`      | Number of iterations
+ `Err_limit` | Iterative error
+ `Lax_factor`| Relaxation factor
+-------------|-----------------------------------------------------------------------------------------
+ `L`         | Lower triangular matrix of `A`
+ `U`         | Upper triangular matrix of `A`
+ `R`         | `R`=`L`+`U`
+ `D`         | Diagonal matrix of `A`
+ `M`         | `M`=invert`D`
+ `P`         | Arrangement matrix
+ `y`         | Integer vector in dirext methods and jacobi method
+ `solution`  | Repersent `x`, which defined by `A`·`x`=`b`
 
 --------------------
 ## Direct methods ##

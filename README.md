@@ -2,6 +2,23 @@ Slove Linear Equations
 ========================
 ###### _flowchart and program control flow_ ######
 
+_Values_      | Define
+> `A`         :Coefficient matrix  
+> `b`         :Right side vector  
+> `A|b`       :Augmented matrix which contains coefficient matrix `A` and right side vector `b`  
+> `iter`      :Number of iterations  
+> `Err_limit` :Iterative error  
+> `Lax_factor`:Relaxation factor  
+
+> `L`         :Lower triangular matrix of `A`  
+> `U`         :Upper triangular matrix of `A`  
+> `R`         :`R`=`L`+`U`  
+> `D`         :Diagonal matrix of `A`  
+> `M`         :`M`=invert`D`  
+> `P`         :Arrangement matrix  
+> `y`         :Integer vector in dirext methods and jacobi method  
+> `solution`  :Repersent `x`, which defined by `A`·`x`=`b`  
+
 --------------------
 ## Direct methods ##
 
@@ -9,10 +26,10 @@ Slove Linear Equations
 - [x]  [**LU decomposition**][LU] method with [pivoting][]
 
 ###### _control flow and flowcharts of_ **Gaussian elimination** ######
-  * **Input:** Augmented matrix **A|b** which contains coefficient matrix **A** and right side vector **b** 
+  * **Input:** `A|b`
 
 ###### _control flow and flowcharts of_ **LU decomposition** ######
-  * **Input:** coefficient matrix **A** and right side vector **b** 
+  * **Input:** `A`,`b`
 --------------------
 ## Iterative methods ##
 
@@ -22,11 +39,11 @@ Slove Linear Equations
 
 
 ###### _control flow and flowcharts of_ **Jacobi method** ######
-  * **Input:** coefficient matrix **A**, right side vector **b**, number of iterations**iter**, iterative error **Err_limit**  
+  * **Input:** `A`,`b`,`iter`,`Err_limit`  
 ###### _control flow and flowcharts of_ **Gauss–Seidel method** ######
-  * **Input:** coefficient matrix **A**, right side vector **b**, number of iterations**iter**, iterative error **Err_limit**  
+  * **Input:** `A`,`b`,`iter`,`Err_limit`  
 ###### _control flow and flowcharts of_ **Successive over-relaxation method** ######
-  * **Input:** coefficient matrix **A**, right side vector **b**, number of iterations**iter**, iterative error **Err_limit**,relaxation factor **Lax_factor**  
+  * **Input:** `A`,`b`,`iter`,`Err_limit`,`Lax_factor`  
 
 [Gaussian_elimination]:https://en.wikipedia.org/wiki/Gaussian_elimination "Refer to WIKIPEDIA."
 [pivoting]:https://en.wikipedia.org/wiki/Pivot_element "Refer to WIKIPEDIA."

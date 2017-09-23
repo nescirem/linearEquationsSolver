@@ -1,6 +1,6 @@
 
-SUBROUTINE jacobi_iteration
-	USE typedef, only: n_var,A,b,y,L,U,D,R,M,solution,i_row,i_col
+SUBROUTINE GS_iteration
+	USE typedef, only: n_var,A,b,solution,i_row,i_col
 	USE algorithm_control, ONLY: iter,Err_limit
 	IMPLICIT NONE
 	INTERFACE
@@ -9,38 +9,34 @@ SUBROUTINE jacobi_iteration
 			REAL(8),ALLOCATABLE :: diff_solution(:)
 		END FUNCTION
 	END INTERFACE
-	INTEGER :: i_i,i_r,i_c
+	INTEGER :: i_i,i_s,i_t
 	REAL(8),ALLOCATABLE :: solution_old(:),diff_solution(:)
+	REAL(8) :: add
 
 	!read in martrix
-	CALL read_matrix_jacobi
+	CALL read_matrix_GS
 	
 	ALLOCATE(solution_old(n_var),diff_solution(n_var))
 	!initiate x_0
 	solution=0.0d0
-
-	L=0.0d0
-	D=0.0d0
-	U=0.0d0
-	M=0.0d0
-	R=0.0d0
-	y=0.0d0
-
-	!A=L+D+U
-	FORALL (i_r=1:n_var,i_c=1:n_var,i_r<i_c) U(i_r,i_c)=A(i_r,i_c) !upper triangular
-	FORALL (i_r=1:n_var,i_c=1:n_var,i_r==i_c) D(i_r,i_c)=A(i_r,i_c) !diagonal
-	FORALL (i_r=1:n_var,i_c=1:n_var,i_r>i_c) L(i_r,i_c)=A(i_r,i_c) !lower triangular
-	
-	CALL invert_matrix(D,M)
-	R=(L+U)
-	y=MATMUL(M,b)
 	
 	DO i_i=1,iter
 		solution_old=solution
-		solution=y-MATMUL(MATMUL(M,R),solution_old)
+		DO i_s=1,n_var
+			add=0.0d0
+			DO i_t=1,i_s-1
+				add=add+A(i_t,i_s)*solution(i_t)
+			ENDDO
+			DO i_t=i_s+1,n_var
+				add=add+A(i_t,i_s)*solution_old(i_t)
+			ENDDO
+			solution(i_s)=(b(i_s)-add)/A(i_s,i_s)
+		ENDDO
+		
 		WRITE(*,"('iter=',I6)") i_i
 		WRITE(*,"('   x1,                     x2,                     ...')")
 		WRITE(*,*) solution(1),solution(2)
+
 		diff_solution=solution-solution_old
 		IF (norm_vec_inf(diff_solution)<Err_limit) THEN
 			WRITE(*,"('Converged')")
@@ -51,4 +47,4 @@ SUBROUTINE jacobi_iteration
 		ENDIF
 	ENDDO
 	
-END SUBROUTINE jacobi_iteration
+END SUBROUTINE GS_iteration

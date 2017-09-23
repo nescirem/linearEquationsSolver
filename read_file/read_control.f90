@@ -17,9 +17,9 @@ SUBROUTINE read_control
 				READ(666,*,IOSTAT=status) method
 			ELSEIF(dum(3:6)=='iter') THEN
 				READ(666,*,IOSTAT=status) iter
-			ELSEIF(dum(3:11)=='error limit') THEN
+			ELSEIF(dum(3:13)=='error limit') THEN
 				READ(666,*,IOSTAT=status) Err_limit
-			ELSEIF(dum(3:18)=='iter') THEN
+			ELSEIF(dum(3:20)=='relaxiation factor') THEN
 				READ(666,*,IOSTAT=status) Lax_factor
 			ENDIF
 			IF(status<0) CALL error_output(2)

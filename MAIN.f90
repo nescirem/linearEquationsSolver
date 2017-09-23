@@ -16,6 +16,10 @@ PROGRAM solve_liner_equation
 		CALL LU_decomposition
 	CASE(3)
 		CALL jacobi_iteration
+	CASE(4)
+		CALL GS_iteration
+	CASE(5)
+		CALL SOR_iteration
 	END SELECT
 	!Output result
 	WRITE(*,*) solution

@@ -2,17 +2,17 @@
 # number of variables
  3
 # martrix
- 1 2 3 14
- 2 5 2 18
- 3 1 5 20
+ 4 3 0 24
+ 3 4 -1 30
+ 0 -1 4 -24
  
 * CONTROL *
 # method 1=Gaussian elimination; 2=LU decomposition; 3=Jacobi method; 4=G–S method; 5=SOR method
- 3
+ 5
 # iter
  150
 # error limit
- 1D-7
+ 1.0D-7
 # relaxiation factor
- 0.3
+ 1.25
 END

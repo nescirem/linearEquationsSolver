@@ -17,7 +17,7 @@ Slove Linear Equations
  `D`         | Diagonal matrix of `A`
  `M`         | `M`=invert`D`
  `P`         | Arrangement matrix
- `y`         | Integer vector in dirext methods and jacobi method
+ `y`         | Intermediate vector in direct methods and jacobi method
  `solution`  | Repersent `x`, which defined by `A`·`x`=`b`
 
 --------------------

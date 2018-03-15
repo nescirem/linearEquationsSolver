@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectCreator="Intel Fortran" Keyword="Console Application" Version="11.0" ProjectIdGuid="{8A879B19-1414-4840-A97B-CD4636C6AB00}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration>
+		<Configuration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" SubSystem="subSystemConsole"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/>
+				<Tool Name="VFManifestTool" SuppressStartupBanner="true"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<Filter Name="functions">
+		<File RelativePath=".\functions\norm_vec_inf.f90"/></Filter>
+		<Filter Name="read_file">
+		<File RelativePath=".\read_file\read_control.f90"/>
+		<File RelativePath=".\read_file\read_martrix_jacobi.f90"/>
+		<File RelativePath=".\read_file\read_matrix_doolittle.f90"/>
+		<File RelativePath=".\read_file\read_matrix_gauss.f90"/>
+		<File RelativePath=".\read_file\read_matrix_GS.f90"/>
+		<File RelativePath=".\read_file\read_matrix_SOR.f90"/></Filter>
+		<Filter Name="slover">
+		<File RelativePath=".\slover\Gauss_elimination.f90"/>
+		<File RelativePath=".\slover\GS_iteration.f90"/>
+		<File RelativePath=".\slover\jacobi_iteration.f90"/>
+		<File RelativePath=".\slover\LU_decomposition.f90"/>
+		<File RelativePath=".\slover\SOR_iteration.f90"/></Filter>
+		<File RelativePath=".\dealloc.f90"/>
+		<File RelativePath=".\error_output.f90"/>
+		<File RelativePath=".\input_route.f90"/>
+		<File RelativePath=".\invert_matrix.f90"/>
+		<File RelativePath=".\MAIN.f90"/>
+		<File RelativePath=".\README.md"/>
+		<File RelativePath=".\typedef.f90"/></Filter></Files>
+	<Globals/></VisualStudioProject>

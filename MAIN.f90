@@ -23,8 +23,6 @@ PROGRAM solve_liner_equation
 	END SELECT
 	!Output result
 	WRITE(*,*) solution
-	!deallocate arrays
-!	CALL dealloc
 	
 	STOP
 	

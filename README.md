@@ -25,6 +25,7 @@ Slove Linear Equations
 
 - [x]  [**Gaussian elimination**][Gaussian_elimination] method with [pivoting][]
 - [x]  [**LU decomposition**][LU] method with [pivoting][]
+- [ ]  [**TDMA**][TDMA] method with [pivoting][]
 
 ###### _control flow and flowcharts of_ **Gaussian elimination** ######
   * **Input:** `A|b`
@@ -49,6 +50,7 @@ Slove Linear Equations
 [Gaussian_elimination]:https://en.wikipedia.org/wiki/Gaussian_elimination "Refer to WIKIPEDIA."
 [pivoting]:https://en.wikipedia.org/wiki/Pivot_element "Refer to WIKIPEDIA."
 [LU]:https://en.wikipedia.org/wiki/LU_decomposition "Refer to WIKIPEDIA."
+[TDMA]:https://en.wikipedia.org/wiki/Tridiagonal_matrix_algorithm "Refer to WIKIPEDIA."
 
 [Jacobi]:https://en.wikipedia.org/wiki/Jacobi_method "Refer to WIKIPEDIA."
 [Gauss_Seidel]:https://en.wikipedia.org/wiki/Gauss%E2%80%93Seidel_method "Refer to WIKIPEDIA."

@@ -4,7 +4,7 @@
 		<Platform Name="Win32"/></Platforms>
 	<Configurations>
 		<Configuration Name="Debug|Win32">
-				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug" Interfaces="true"/>
 				<Tool Name="VFLinkerTool" LinkIncremental="linkIncrementalNo" SuppressStartupBanner="true" GenerateDebugInformation="true" SubSystem="subSystemConsole"/>
 				<Tool Name="VFResourceCompilerTool"/>
 				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
@@ -41,8 +41,8 @@
 		<File RelativePath=".\slover\GS_iteration.f90"/>
 		<File RelativePath=".\slover\jacobi_iteration.f90"/>
 		<File RelativePath=".\slover\LU_decomposition.f90"/>
-		<File RelativePath=".\slover\SOR_iteration.f90"/></Filter>
-		<File RelativePath=".\dealloc.f90"/>
+		<File RelativePath=".\slover\SOR_iteration.f90"/>
+		<File RelativePath=".\slover\TDMA.f90"/></Filter>
 		<File RelativePath=".\error_output.f90"/>
 		<File RelativePath=".\input_route.f90"/>
 		<File RelativePath=".\invert_matrix.f90"/>
